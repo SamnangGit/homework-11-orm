@@ -27,8 +27,23 @@ class Job(Base):
 
 class Assignment(Base):
     __tablename__ = "assignment"
+    assign_num = Column(Integer, primary_key=True)
+    assign_date = Column(Date)
+    proj_num = Column(Integer, ForeignKey('project.proj_num'))
+    emp_num = Column(Integer, ForeignKey('employee.emp_num'))
+    assign_job = Column(Integer)
+    assign_chg_hr = Column(Float(5,2))
+    assign_hours = Column(Float(2,1))
+    assign_charge = Column(Float(5,2))
+
+
     
 
 class Project(Base):
     __tablename__ = "project"
+    proj_num = Column(Integer, primary_key=True)
+    proj_name = Column(String(12))
+    proj_value = Column(Integer)
+    proj_balance = Column(Float(8,1))
+    emp_num = Column(Integer, ForeignKey('employee.emp_num'))
     
